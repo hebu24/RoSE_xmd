@@ -1,0 +1,22 @@
+defaults:
+  - ../base
+
+platform: franka
+environment:
+  backend: franka
+  action_dim: 7
+  state_dim: 25
+  control_mode: absolute_ee
+  policy_hz: 15
+
+data:
+  source: franka_h5
+  raw_demo_h5: null
+  prepared_dir: data/franka
+  image_size: 256
+  action_robust_margin: 0.01
+  state_robust_margin: 0.01
+
+evaluation:
+  mode: hardware_or_offline_chunk
+  online_env: false

@@ -1,0 +1,25 @@
+defaults:
+  - ../base
+
+platform: libero
+environment:
+  backend: libero
+  suite: libero_10
+  action_dim: 7
+  obs_mode: pixels_agent_pos
+
+data:
+  source: lerobot
+  dataset_root: data/libero
+  language_conditioned: true
+
+training:
+  stages:
+    - name: random_mask_pretrain
+      mask_family: gamma
+    - name: structured_joint_train
+      mask_family: alpha_beta_gamma
+
+evaluation:
+  mode: online_rollout
+  unseen_mask: mix0

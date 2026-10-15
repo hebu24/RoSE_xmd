@@ -1,0 +1,37 @@
+project:
+  name: rose_xmd
+  seed: 0
+  output_dir: outputs
+
+platform: maniskill
+
+action:
+  dim: 7
+  representation: temporal_cartesian
+  pose_dims: [0, 1, 2, 3, 4, 5]
+  gripper_dim: 6
+
+map:
+  progress_range: [0.0, 1.0]
+  long_window_backward: 0
+  long_window_forward: 32
+  short_window_horizon: 0
+  mask_types: [random]
+  mask_ratios: [0.2]
+
+policy:
+  backbone: dit
+  horizon: 16
+  obs_horizon: 2
+  action_horizon: 8
+  loss_mode: mse
+  loss_mask_area_weight: 0.0
+
+progress:
+  enabled: true
+  backend: stpm
+
+runtime:
+  device: cuda
+  num_workers: 0
+  checkpoint_freq: 5000

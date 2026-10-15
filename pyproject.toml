@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rose-xmd"
+version = "0.1.0"
+description = "Unified Robotic Spatiotemporal Editing framework"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+torch = ["torch>=2.1", "torchvision>=0.16"]
+maniskill = ["gymnasium", "h5py"]
+libero = ["datasets", "draccus"]
+franka = ["h5py", "opencv-python"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+rose-train = "rose_xmd.cli.train:main"
+rose-eval = "rose_xmd.cli.evaluate:main"
+rose-preprocess = "rose_xmd.cli.preprocess:main"
+rose-infer = "rose_xmd.cli.infer:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

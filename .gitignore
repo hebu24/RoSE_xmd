@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Local data and model artifacts
+data/**
+outputs/**
+checkpoints/**
+wandb/
+*.h5
+*.hdf5
+*.zarr/
+*.pt
+*.pth
+*.safetensors
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+*~
