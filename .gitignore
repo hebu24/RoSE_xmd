@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *.so
@@ -8,10 +7,9 @@ __pycache__/
 .venv/
 venv/
 
-# Local data and model artifacts
-data/**
-outputs/**
-checkpoints/**
+data/
+outputs/
+docs/
 wandb/
 *.h5
 *.hdf5
@@ -20,12 +18,10 @@ wandb/
 *.pth
 *.safetensors
 
-# Local configuration and secrets
 .env
 .env.*
 !.env.example
 
-# Editors / OS
 .idea/
 .vscode/
 *.swp

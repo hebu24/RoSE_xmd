@@ -1,4 +1,3 @@
-"""Unified reference-guided inference command."""
 
 
 def main() -> None:

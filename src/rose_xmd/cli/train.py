@@ -1,4 +1,3 @@
-"""Unified training command; implementation follows contract migration."""
 
 
 def main() -> None:

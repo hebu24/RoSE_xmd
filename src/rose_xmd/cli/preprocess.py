@@ -1,4 +1,3 @@
-"""Unified dataset preprocessing command."""
 
 
 def main() -> None:
