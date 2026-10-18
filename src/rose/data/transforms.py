@@ -35,4 +35,10 @@ def to_map(values, representation: ActionRepresentation, anchor=None):
         result[..., :3] += np.asarray(anchor)[..., :3]
         result[..., 3:6] += np.asarray(anchor)[..., 3:6]
         return result
-    raise NotImplementedError(f"conversion from {representation.value} is platform-specific")
+    if representation is ActionRepresentation.UMI:
+        from rose.data.action_spaces.umi import relative_umi_to_absolute
+        return relative_umi_to_absolute(array, anchor)
+    if representation is ActionRepresentation.ABS6D:
+        from rose.data.action_spaces.abs6d import absolute_abs6d_to_euler
+        return absolute_abs6d_to_euler(array)
+    raise ValueError(representation)
