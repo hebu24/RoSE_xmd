@@ -15,9 +15,16 @@ class ExternalRoots:
 
 
 def resolve_roots() -> ExternalRoots:
+    defaults = {
+        "ROSE_MANISKILL_ROOT": "/home/hebu/code/mam/ManiSkill",
+        "ROSE_MASKED_ACTION_ROOT": "/home/hebu/code/mam/Masked-Action-Model",
+        "ROSE_LEROBOT_ROOT": "/home/hebu/code/mam/lerobot_mam",
+    }
+
     def resolve(name: str) -> Path | None:
-        value = os.environ.get(name)
-        return Path(value).expanduser() if value else None
+        value = os.environ.get(name, defaults[name])
+        path = Path(value).expanduser()
+        return path if path.exists() else None
 
     return ExternalRoots(
         maniskill=resolve("ROSE_MANISKILL_ROOT"),
