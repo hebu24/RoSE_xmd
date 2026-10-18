@@ -7,9 +7,9 @@ __pycache__/
 .venv/
 venv/
 
-data/
-outputs/
-docs/
+/data/
+/outputs/
+/docs/
 wandb/
 *.h5
 *.hdf5

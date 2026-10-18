@@ -2,6 +2,10 @@ defaults:
   - ../base
 
 platform: maniskill
+policy:
+  name: IP
+map:
+  interface: MAP
 environment:
   backend: maniskill
   obs_mode: rgb
@@ -13,7 +17,7 @@ data:
   source: maniskill_demo
   raw_demo_h5: null
   raw_demo_json: null
-  prepared_dir: data/maniskill
+  prepared_dir: outputs/datasets/maniskill
 
 evaluation:
   mode: online_rollout

@@ -2,6 +2,10 @@ defaults:
   - ../base
 
 platform: libero
+policy:
+  name: IP
+map:
+  interface: MAP
 environment:
   backend: libero
   suite: libero_10
@@ -11,6 +15,7 @@ environment:
 data:
   source: lerobot
   dataset_root: data/libero
+  prepared_dir: outputs/datasets/libero
   language_conditioned: true
 
 training:

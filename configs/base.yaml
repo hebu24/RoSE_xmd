@@ -1,5 +1,5 @@
 project:
-  name: rose_xmd
+  name: rose
   seed: 0
   output_dir: outputs
 
@@ -12,14 +12,17 @@ action:
   gripper_dim: 6
 
 map:
+  interface: MAP
+  window:
+    long_backward: 0
+    long_forward: 32
+    short_horizon: 0
   progress_range: [0.0, 1.0]
-  long_window_backward: 0
-  long_window_forward: 32
-  short_window_horizon: 0
   mask_types: [random]
   mask_ratios: [0.2]
 
 policy:
+  name: IP
   backbone: dit
   horizon: 16
   obs_horizon: 2
