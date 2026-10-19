@@ -5,6 +5,7 @@ set -euo pipefail
 # installed only when they are present at the configured paths.
 ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 export UV_CACHE_DIR="${UV_CACHE_DIR:-$ROOT_DIR/.uv-cache}"
+export MPLCONFIGDIR="${MPLCONFIGDIR:-$ROOT_DIR/.matplotlib}"
 VENV_DIR="${ROSE_VENV_DIR:-$ROOT_DIR/.venv}"
 PROFILE="${ROSE_PROFILE:-all}"
 PYTHON_REQUEST="${ROSE_PYTHON:-3.12}"
