@@ -16,7 +16,7 @@ dependencies = [
 torch = ["torch>=2.1", "torchvision>=0.16"]
 maniskill = ["gymnasium", "h5py"]
 libero = ["datasets", "draccus"]
-franka = ["h5py", "opencv-python"]
+franka = ["h5py", "opencv-python-headless>=4.9.0"]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.scripts]
