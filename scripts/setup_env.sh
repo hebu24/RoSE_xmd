@@ -7,7 +7,7 @@ ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 export UV_CACHE_DIR="${UV_CACHE_DIR:-$ROOT_DIR/.uv-cache}"
 VENV_DIR="${ROSE_VENV_DIR:-$ROOT_DIR/.venv}"
 PROFILE="${ROSE_PROFILE:-all}"
-PYTHON_REQUEST="${ROSE_PYTHON:-python3}"
+PYTHON_REQUEST="${ROSE_PYTHON:-3.12}"
 INSTALL_EXTERNAL=1
 RUN_CHECKS=1
 
@@ -52,10 +52,10 @@ while [[ $# -gt 0 ]]; do
 done
 
 case "$PROFILE" in
-  core) EXTRAS="dev"; NEED_PYTHON_MINOR=10 ;;
-  sim) EXTRAS="torch,maniskill,libero,dev"; NEED_PYTHON_MINOR=12 ;;
-  real) EXTRAS="torch,franka,dev"; NEED_PYTHON_MINOR=10 ;;
-  all) EXTRAS="torch,maniskill,libero,franka,dev"; NEED_PYTHON_MINOR=12 ;;
+  core) EXTRAS="dev"; NEED_PYTHON_MINOR=10; MAX_PYTHON_MINOR=99 ;;
+  sim) EXTRAS="torch,maniskill,libero,dev"; NEED_PYTHON_MINOR=12; MAX_PYTHON_MINOR=12 ;;
+  real) EXTRAS="torch,franka,dev"; NEED_PYTHON_MINOR=10; MAX_PYTHON_MINOR=99 ;;
+  all) EXTRAS="torch,maniskill,libero,franka,dev"; NEED_PYTHON_MINOR=12; MAX_PYTHON_MINOR=12 ;;
   *) echo "invalid profile: $PROFILE (expected core, sim, real, or all)" >&2; exit 2 ;;
 esac
 
@@ -79,6 +79,10 @@ python_major=${python_version%%.*}
 python_minor=${python_version#*.}
 if (( python_major < 3 || (python_major == 3 && python_minor < NEED_PYTHON_MINOR) )); then
   echo "Python $python_version is too old for profile '$PROFILE'; need Python 3.$NEED_PYTHON_MINOR or newer." >&2
+  exit 1
+fi
+if (( python_major == 3 && python_minor > MAX_PYTHON_MINOR )); then
+  echo "Python $python_version is not supported for profile '$PROFILE'; use Python 3.$MAX_PYTHON_MINOR (ManiSkill's mplib dependency has no newer wheel)." >&2
   exit 1
 fi
 

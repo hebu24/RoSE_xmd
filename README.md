@@ -19,8 +19,9 @@ installs ManiSkill and LeRobot from the default sibling paths when they exist,
 runs `uv pip check`, import checks, and the test suite. It is safe to run again;
 `uv` reuses the environment and only updates what is needed.
 
-The default profile uses Python 3.12 or newer because the current LeRobot
-integration requires Python >=3.12. A minimal environment for unit tests can
+The default profile uses Python 3.12 because the current LeRobot integration
+requires Python >=3.12 and the ManiSkill `mplib` dependency currently has no
+Python 3.13 wheel. A minimal environment for unit tests can
 be created with:
 
 ```bash
